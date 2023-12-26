@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Ajax</title>
+</head>
+<body>
+    <button onclick="showCountries()">Show Countries</button>
+    <output></output>
+
+    <script>
+        function showCountries(){
+            let xhr = new XMLHttpRequest()
+            xhr.open("GET", 'https://restcountries.com/v3.1/independent?status=true', true)
+            xhr.onload = function(){
+                if(xhr.status === 200){
+                    console.log("success")
+                    let countries = JSON.parse(this.response)
+                    countries.forEach(country => {
+                        console.log(country)
+                        const countryCard = document.createElement("div")
+                        countryCard.innerHTML = `${country.name.official}, ${country.cca3}, ${country.flag}, Capital:${country.capital}, size:${country.area},  continent:${country.continents[0]}, currency:${country.curriencies}`
+                        document.querySelector("output").appendChild(countryCard)
+                        countryCard.style.fontSize = "32px"
+                    })
+                }
+            }
+            xhr.send()
+        }
+        
+    </script>
+</body>
+</html>
