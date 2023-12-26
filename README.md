@@ -1,5 +1,7 @@
 ### The XMLHttpRequest API
 
+Why do we need this?  To update sections of a page without reloading the entire page.  One technique to do this is called Asynchronous JavaScript and XML(Ajax).
+
 Sometimes, especially in older code, you'll see an API called XMLHttpRequest (often abbreviated as "XHR") used to make HTTP requests. This predated Fetch, and was really the first API widely used to implement AJAX. We recommend you use Fetch if you can: it's a simpler API and has more features than XMLHttpRequest.  This is what an XMLHttpRequest  looks like: 
 
 
